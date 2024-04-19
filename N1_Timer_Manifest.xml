@@ -11,8 +11,8 @@
   <DefaultLocale>fr-FR</DefaultLocale>
   <DisplayName DefaultValue="PCU Timer" />
   <Description DefaultValue="A timer add-in for productivity." />
-  <IconUrl DefaultValue="https://quenting-creator.github.io/quxywa.github.io/assets/icon-32.png" />
-  <HighResolutionIconUrl DefaultValue="https://quenting-creator.github.io/quxywa.github.io/assets/hi-res-icon.png" />
+  <IconUrl DefaultValue="https://quenting-creator.github.io/N1_Timer/assets/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="https://quenting-creator.github.io/N1_Timer/assets/hi-res-icon.png" />
   <SupportUrl DefaultValue="https://cgi.com" /> <!-- This is optional if not distributing through AppSource -->
 
   <Hosts>
@@ -20,7 +20,7 @@
   </Hosts>
   
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://quenting-creator.github.io/quxywa.github.io/index.html" />
+    <SourceLocation DefaultValue="https://quenting-creator.github.io/N1_Timer/index.html" />
   </DefaultSettings>
   
   <Permissions>Restricted</Permissions>
