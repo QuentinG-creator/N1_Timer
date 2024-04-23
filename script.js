@@ -1,23 +1,26 @@
 Office.onReady(info => {
   if(info.host === Office.HostType.Excel)
   {
-    getDomaine();
-    $("#ListDomaine").select2({
-      placeholder: "Select an option",
-      width: "100%"
-    });
-    $("#initialisation").on("click", () => tryCatch(initialisation));
-    $("#Start").on("click", () => tryCatch(start_Timer));
-    $("#Stop").on("click", () => tryCatch(stop_Timer));
-    $("#Pause").on("click", () => tryCatch(pause));
-    $("#Reprendre").on("click", () => tryCatch(reprendre));
+    Office.initialize = function (reason)
+    {
+      getDomaine();
+      $("#ListDomaine").select2({
+        placeholder: "Select an option",
+        width: "100%"
+      });
+      $("#initialisation").on("click", () => tryCatch(initialisation));
+      $("#Start").on("click", () => tryCatch(start_Timer));
+      $("#Stop").on("click", () => tryCatch(stop_Timer));
+      $("#Pause").on("click", () => tryCatch(pause));
+      $("#Reprendre").on("click", () => tryCatch(reprendre));
+    }
   }  
 });
 
-var tab_timers=[]
-var timer = 0;
-var time_spend_pause = 0;
-var is_paused = false;
+let tab_timers=[]
+let timer = 0;
+let time_spend_pause = 0;
+let is_paused = false;
 // This function is for refresh the select when the number of incident is modify.
 function pause() {
   if (is_paused == false && timer != 0) {
