@@ -1,4 +1,3 @@
-
 Office.onReady(()=> 
 {
   getDomaine();
