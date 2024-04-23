@@ -1,22 +1,18 @@
-Office.onReady(info => {
-  if(info.host === Office.HostType.Excel)
-  {
-    Office.initialize = function (reason)
-    {
-      getDomaine();
-      $("#ListDomaine").select2({
-        placeholder: "Select an option",
-        width: "100%"
-      });
-      $("#initialisation").on("click", () => tryCatch(initialisation));
-      $("#Start").on("click", () => tryCatch(start_Timer));
-      $("#Stop").on("click", () => tryCatch(stop_Timer));
-      $("#Pause").on("click", () => tryCatch(pause));
-      $("#Reprendre").on("click", () => tryCatch(reprendre));
-    }
-  }  
-});
 
+Office.initialize = function (reason)
+{
+  getDomaine();
+  $("#ListDomaine").select2({
+    placeholder: "Select an option",
+    width: "100%"
+  });
+  $("#initialisation").on("click", () => tryCatch(initialisation));
+  $("#Start").on("click", () => tryCatch(start_Timer));
+  $("#Stop").on("click", () => tryCatch(stop_Timer));
+  $("#Pause").on("click", () => tryCatch(pause));
+  $("#Reprendre").on("click", () => tryCatch(reprendre));
+}
+ 
 let tab_timers=[]
 let timer = 0;
 let time_spend_pause = 0;
