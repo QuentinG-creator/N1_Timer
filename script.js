@@ -1,15 +1,17 @@
-Office.onReady((info) => {
-  console.log("Office.js is now ready in ${info.host} host.");
-  getDomaine();
-  $("#ListDomaine").select2({
-    placeholder: "Select an option",
-    width: "100%"
-  });
-  $("#initialisation").on("click", () => tryCatch(initialisation));
-  $("#Start").on("click", () => tryCatch(start_Timer));
-  $("#Stop").on("click", () => tryCatch(stop_Timer));
-  $("#Pause").on("click", () => tryCatch(pause));
-  $("#Reprendre").on("click", () => tryCatch(reprendre));
+Office.onReady(info => {
+  if(info.host === Office.HostType.Excel)
+  {
+    getDomaine();
+    $("#ListDomaine").select2({
+      placeholder: "Select an option",
+      width: "100%"
+    });
+    $("#initialisation").on("click", () => tryCatch(initialisation));
+    $("#Start").on("click", () => tryCatch(start_Timer));
+    $("#Stop").on("click", () => tryCatch(stop_Timer));
+    $("#Pause").on("click", () => tryCatch(pause));
+    $("#Reprendre").on("click", () => tryCatch(reprendre));
+  }  
 });
 
 var tab_timers=[]
