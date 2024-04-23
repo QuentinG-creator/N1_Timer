@@ -1,5 +1,5 @@
-Office.onReady(()=> 
-{
+Office.onReady((info) => {
+  console.log("Office.js is now ready in ${info.host} host.");
   getDomaine();
   $("#ListDomaine").select2({
     placeholder: "Select an option",
