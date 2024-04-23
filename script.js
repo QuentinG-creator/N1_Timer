@@ -1,10 +1,5 @@
 Office.onReady((info) => {
   console.log("Office.js is now ready in ${info.host} host.");
-  getDomaine();
-  $("#ListDomaine").select2({
-    placeholder: "Select an option",
-    width: "100%"
-  });
   $("#initialisation").on("click", () => tryCatch(initialisation));
   $("#Start").on("click", () => tryCatch(start_Timer));
   $("#Stop").on("click", () => tryCatch(stop_Timer));
@@ -156,7 +151,7 @@ function stop_Timer() {
 
 function getDomaine() {
   var select = document.getElementById("ListDomaine");
-
+  
   var domaines = {};
 
   return Excel.run(function(context) {
@@ -192,7 +187,11 @@ function getDomaine() {
 function initialisation() {
   const nniInput = document.getElementById("NNI");
   const nniValue = nniInput.value;
-
+  getDomaine();
+  $("#ListDomaine").select2({
+    placeholder: "Select an option",
+    width: "100%"
+  });
   var flag = 0;
 
   if (nniValue) {
