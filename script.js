@@ -31,7 +31,7 @@ function reprendre() {
     var actualTime = new Date();
     timer = actualTime.getTime() - time_spend_pause;
     is_paused = false;
-  } else console.log("oui")
+  } else console.log("Vous n'êtes pas en pause")
 }
 
 function displayTimer(tab_timers) {
@@ -147,7 +147,7 @@ function stop_Timer() {
             return context.sync();
           });
         } else {
-          console.log("oui");
+          alert("Veuillez initialiser votre NNI");
           return context.sync();
         }
       });
@@ -277,8 +277,6 @@ function initialisation() {
 
             nniCellNniDMT.values = [[nniValue]];
             idDateCellDMT.values = [[actualDate.toLocaleDateString()]];
-
-            console.log("oui")
           } else {
             console.log("oui")
           }
