@@ -142,7 +142,7 @@ function stop_Timer() {
             return context.sync();
           });
         } else {
-          alert("! Veuillez appuyer sur initialiser avec votre NNI avant tout autre action !");
+          console.log("oui");
           return context.sync();
         }
       });
