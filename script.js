@@ -13,11 +13,12 @@ let time_spend_pause = 0;
 let is_paused = false;
 // This function is for refresh the select when the number of incident is modify.
 function pause() {
-  if (is_paused == false && timer != 0) {
+  if (is_paused == false && timer != 0) 
+  {
     var actualTime = new Date();
     time_spend_pause = actualTime.getTime() - timer;
     is_paused = true;
-  } else alert("Votre timer est déjà en pause ou alors vous n'avez pas démarrer de timer");
+  } else console.log("oui")
 }
 
 function reprendre() {
@@ -25,7 +26,7 @@ function reprendre() {
     var actualTime = new Date();
     timer = actualTime.getTime() - time_spend_pause;
     is_paused = false;
-  } else alert("Votre timer n'est pas en pause");
+  } else console.log("oui")
 }
 
 function displayTimer(tab_timers) {
@@ -55,17 +56,17 @@ function stop_Timer() {
   var flag = 0;
 
   if (!nniValue) {
-    alert("! Veuillez entrer votre NNI !");
+    console.log("oui")
     return;
   }
 
   if (!timer) {
-    alert("! Le timer n'est pas lancé !");
+    console.log("oui")
     return;
   }
 
   if (is_paused) {
-    alert("! Le timer est en pause !");
+    console.log("oui")
     return;
   }
 
@@ -276,9 +277,9 @@ function initialisation() {
             nniCellNniDMT.values = [[nniValue]];
             idDateCellDMT.values = [[actualDate.toLocaleDateString()]];
 
-            alert("Vous avez bien initialiser");
+            console.log("oui")
           } else {
-            alert("! Vous avez déjà initialiser votre NNI pour aujourd'hui !");
+            console.log("oui")
           }
 
           return context.sync();
@@ -286,7 +287,7 @@ function initialisation() {
       });
     });
   } else {
-    alert("! Veuillez entrer votre NNI !");
+    console.log("oui")
   }
 }
 
@@ -295,7 +296,7 @@ function start_Timer() {
   if (timer == 0) {
     var actualDate = new Date();
     timer = actualDate.getTime();
-  } else alert("vous avez déjà un incident en cours");
+  } else console.log("oui")
 }
 /** Default helper for invoking an action and handling errors. */
 function tryCatch(callback) {
