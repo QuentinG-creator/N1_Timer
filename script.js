@@ -23,7 +23,7 @@ function pause() {
     var actualTime = new Date();
     time_spend_pause = actualTime.getTime() - timer;
     is_paused = true;
-  } else console.log("oui")
+  } else console.log("Vous êtes déjà en pause")
 }
 
 function reprendre() {
