@@ -11,19 +11,34 @@ Office.onReady((info) => {
   $("#Pause").on("click", () => tryCatch(pause));
   $("#Reprendre").on("click", () => tryCatch(reprendre));
 });
- 
-let tab_timers=[]
+
+let tab_timers = [];
 let timer = 0;
 let time_spend_pause = 0;
 let is_paused = false;
 // This function is for refresh the select when the number of incident is modify.
+
+function show_element(el) {
+  el.style.display = "block";
+}
+
+function hide_element(el) {
+  el.style.display = "none";
+}
+
+function hide_all() {
+  hide_element(document.getElementById("PauseWarn"));
+  hide_element(document.getElementById("NNIWarn"));
+}
+
 function pause() {
-  if (is_paused == false && timer != 0) 
-  {
+  if (is_paused == false && timer != 0) {
     var actualTime = new Date();
     time_spend_pause = actualTime.getTime() - timer;
     is_paused = true;
-  } else console.log("Vous êtes déjà en pause")
+    document.getElementById("Pause").style.background = "lightgreen";
+    hide_all();
+  }
 }
 
 function reprendre() {
@@ -31,15 +46,17 @@ function reprendre() {
     var actualTime = new Date();
     timer = actualTime.getTime() - time_spend_pause;
     is_paused = false;
-  } else console.log("Vous n'êtes pas en pause")
+    document.getElementById("Pause").style.background = "lightgrey";
+    hide_all();
+  }
 }
 
 function displayTimer(tab_timers) {
   // Fund the the table by the id
-  const table = document.getElementById('timersTable');
+  const table = document.getElementById("timersTable");
 
   // Effacer les lignes existantes
-  table.innerHTML = '';
+  table.innerHTML = "";
 
   for (const [domain, timer] of Object.entries(tab_timers)) {
     let row = table.insertRow();
@@ -61,17 +78,17 @@ function stop_Timer() {
   var flag = 0;
 
   if (!nniValue) {
-    console.log("oui")
+    show_element(document.getElementById("NNIWarn"));
     return;
   }
 
   if (!timer) {
-    console.log("oui")
+    document.createElement("start").style.background = "lightred";
     return;
   }
 
   if (is_paused) {
-    console.log("oui")
+    show_element(document.getElementById("PauseWarn"));
     return;
   }
 
@@ -142,12 +159,15 @@ function stop_Timer() {
             idDomaineCellNbD.values = [[idDomaineCellNbD.values[0][0] + 1]];
             idDomaineCellDMTTtl.values = [[idDomaineCellDMT.values[0][0] / idDomaineCellNbD.values[0][0]]];
             timer = 0;
-            tab_timers[domaineValue] = idDomaineCellDMTTtl.values[0][0]
-            displayTimer(tab_timers)
+            tab_timers[domaineValue] = idDomaineCellDMTTtl.values[0][0];
+            displayTimer(tab_timers);
+            document.getElementById("Start").style.background = "lightgrey";
+            hide_all();
             return context.sync();
           });
         } else {
-          alert("Veuillez initialiser votre NNI");
+          document.getElementById("initialisation").style.background = "lightred";
+          hide_all();
           return context.sync();
         }
       });
@@ -157,7 +177,7 @@ function stop_Timer() {
 
 function getDomaine() {
   var select = document.getElementById("ListDomaine");
-  
+
   var domaines = {};
 
   return Excel.run(function(context) {
@@ -176,7 +196,6 @@ function getDomaine() {
         for (var i = 0; i < values.length; i++) {
           let key = values[i][0];
           domaines[key] = 0;
-          console.log(key);
         }
         select.innerHTML = "";
         Object.keys(domaines).forEach(function(option) {
@@ -277,16 +296,16 @@ function initialisation() {
 
             nniCellNniDMT.values = [[nniValue]];
             idDateCellDMT.values = [[actualDate.toLocaleDateString()]];
+            document.getElementById("initialisation").style.background = "lightgreen";
           } else {
-            console.log("oui")
+            document.getElementById("initialisation").style.background = "lightgreen";
           }
-
+          hide_all();
           return context.sync();
         });
       });
     });
   } else {
-    console.log("oui")
   }
 }
 
@@ -295,7 +314,9 @@ function start_Timer() {
   if (timer == 0) {
     var actualDate = new Date();
     timer = actualDate.getTime();
-  } else console.log("oui")
+    document.getElementById("Start").style.background = "lightgreen";
+    hide_all();
+  }
 }
 /** Default helper for invoking an action and handling errors. */
 function tryCatch(callback) {

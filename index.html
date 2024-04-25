@@ -36,6 +36,7 @@
                 <button id="Stop" class="ms-Button-label">
                     <span>Stop</span>
                 </button>
+                <span id="PauseWarn" style="color: red; display: none">Votre timer est en pause !</span>
             </td>
         </tr>
         <tr>
@@ -62,9 +63,8 @@
                 </td>
                 <td>
                     <input id="NNI"/>
+                    <span id="NNIWarn" style="display : none; color : red">Veuillez renseigner votre NNI !</span>
                 </td>
-    
-    
             <tr>
                 <td>
                     <span>Domaine :</span>
@@ -78,7 +78,7 @@
         </table>
     
         <br/>
-        <table id="timersTable"/>
+        <table id="timersTable" />
     </div>
 </body>
 
