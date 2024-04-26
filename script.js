@@ -306,6 +306,7 @@ function initialisation() {
       });
     });
   } else {
+    show_element(document.getElementById('NNIWarn'))
   }
 }
 
