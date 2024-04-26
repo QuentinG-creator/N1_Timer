@@ -282,19 +282,19 @@ function initialisation() {
           var valuesDate = rangeDate.values;
           var valuesNNI = rangeNNI.values;
           for (var i = 0; i < valuesDate.length; i++) {
-            if (valuesDate[i][0] === actualDate.toLocaleDateString() && valuesNNI[i][0] === nniValue) {
+            if (valuesDate[i][0] === actualDate.toLocaleDateString() && valuesNNI[i][0].toUpperCase() === nniValue.toUpperCase()) {
               flag = 1;
             }
           }
 
           if (flag == 0) {
-            nniCellNni.values = [[nniValue]];
+            nniCellNni.values = [[nniValue.toUpperCase()]];
             idDateCell.values = [[actualDate.toLocaleDateString()]];
 
-            nniCellNniNbD.values = [[nniValue]];
+            nniCellNniNbD.values = [[nniValue.toUpperCase()]];
             idDateCellNbD.values = [[actualDate.toLocaleDateString()]];
 
-            nniCellNniDMT.values = [[nniValue]];
+            nniCellNniDMT.values = [[nniValue.toUpperCase()]];
             idDateCellDMT.values = [[actualDate.toLocaleDateString()]];
             document.getElementById("initialisation").style.background = "lightgreen";
           } else {
