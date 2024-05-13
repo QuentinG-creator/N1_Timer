@@ -82,6 +82,8 @@ function stop_Timer() {
     return;
   }
 
+  nniValue = nniValue.toUpperCase()
+
   if (!timer) {
     document.createElement("start").style.background = "lightred";
     return;
