@@ -92,8 +92,6 @@ function stop_Timer() {
     return;
   }
 
-  nniValue = nniValue.toUpperCase();
-
   return Excel.run(function(context) {
     // DMT sheet **************************/
     var sheetDMT = context.workbook.worksheets.getItem("DMT");
@@ -139,7 +137,7 @@ function stop_Timer() {
 
       return context.sync().then(function() {
         for (var i = 0; i < rangeDate.values.length; i++) {
-          if (rangeDate.values[i][0] === actualDate && rangeNNI.values[i][0] === nniValue) {
+          if (rangeDate.values[i][0] === actualDate && rangeNNI.values[i][0] === nniValue.toUpperCase()) {
             var goodRow = i + 1;
             flag = 1;
             break;
