@@ -82,8 +82,6 @@ function stop_Timer() {
     return;
   }
 
-  nniValue = nniValue.toUpperCase()
-
   if (!timer) {
     document.createElement("start").style.background = "lightred";
     return;
@@ -93,6 +91,8 @@ function stop_Timer() {
     show_element(document.getElementById("PauseWarn"));
     return;
   }
+
+  nniValue = nniValue.toUpperCase();
 
   return Excel.run(function(context) {
     // DMT sheet **************************/
@@ -284,7 +284,10 @@ function initialisation() {
           var valuesDate = rangeDate.values;
           var valuesNNI = rangeNNI.values;
           for (var i = 0; i < valuesDate.length; i++) {
-            if (valuesDate[i][0] === actualDate.toLocaleDateString() && valuesNNI[i][0].toUpperCase() === nniValue.toUpperCase()) {
+            if (
+              valuesDate[i][0] === actualDate.toLocaleDateString() &&
+              valuesNNI[i][0].toUpperCase() === nniValue.toUpperCase()
+            ) {
               flag = 1;
             }
           }
@@ -308,7 +311,6 @@ function initialisation() {
       });
     });
   } else {
-    show_element(document.getElementById('NNIWarn'))
   }
 }
 
