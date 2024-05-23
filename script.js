@@ -152,18 +152,17 @@ function stop_Timer() {
 
           var idDomaineCellDMTTtl = sheetDMTTtl.getCell(goodRow, columnIndex);
           idDomaineCellDMTTtl.load("values");
-      
+
           var idDomaineCellNbD = sheetNbD.getCell(goodRow, columnIndex);
           idDomaineCellNbD.load("values");
 
-          if(((actualTime.getTime() - timer)/1000) > 7200) {
-            document.getElementById("Start").style.background = "lightgrey";
-            hide_all();
-            return context.sync();
-          }
-          
           return context.sync().then(function() {
             var actualTime = new Date();
+            if ((actualTime.getTime() - timer) / 1000 > 7200) {
+              document.getElementById("Start").style.background = "lightgrey";
+              hide_all();
+              return context.sync();
+            }
             idDomaineCellDMT.values = [[idDomaineCellDMT.values[0][0] + (actualTime.getTime() - timer) / 1000]];
             idDomaineCellNbD.values = [[idDomaineCellNbD.values[0][0] + 1]];
             idDomaineCellDMTTtl.values = [[idDomaineCellDMT.values[0][0] / idDomaineCellNbD.values[0][0]]];
