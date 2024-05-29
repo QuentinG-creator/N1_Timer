@@ -157,6 +157,7 @@ function stop_Timer() {
           return context.sync().then(function() {
             var actualTime = new Date();
             if ((actualTime.getTime() - timer) / 1000 > 7200) {
+              timer = 0;
               document.getElementById("Start").style.background = "lightgrey";
               hide_all();
               return context.sync();
